@@ -1,0 +1,75 @@
+:root {
+  /* colors */
+  --color-dark: #111111;
+  --color-dark-o80: #111111cc;
+
+  --color-golden: #d4af37;
+  --color-golden-200: #fff2b2;
+  --color-golden-o50: #d4af3780;
+
+  --color-red-900: #82181a;
+  --color-red-500: #fb2c36;
+  --color-red-500-o60: #fb2c3699;
+  --color-red-500-o30: #fb2c364d;
+  --color-red-400: #ff6467;
+  --color-red-100: #ffe2e2;
+
+  --color-amber-900: #78350f;
+  --color-amber-600: #e17100;
+  --color-amber-500: #fe9a00;
+  --color-amber-500-o50: #fe9a0080;
+  --color-amber-500-o30: #fe9a004d;
+  --color-amber-400: #ffb900;
+  --color-amber-100: #fef3c6;
+
+  --color-zinc-500: #71717b;
+  --color-zinc-300: #d8d3d4;
+  --color-zinc-100: #f4f4f5;
+
+  --color-button-gray: #2a2627;
+  --color-button-gray-o80: #2a2627cc;
+
+  /* gradients */
+  --gradient-linear-default: linear-gradient(#00000000 0%, #00000000 100%);
+  --gradient-linear-dark: linear-gradient(
+    to top right,
+    #333333 0%,
+    var(--color-dark, #111111) 50%,
+    #dedede 100%
+  );
+  --gradient-linear-golden: linear-gradient(
+    to bottom right,
+    #ffe57f 0%,
+    var(--color-golden, #d4af37) 50%,
+    #855b00 100%
+  );
+  --gradient-linear-golden-o80: linear-gradient(
+    to bottom right,
+    #ffe57fcc 0%,
+    var(--color-golden, #d4af37cc) 50%,
+    #855b00cc 100%
+  );
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'gf_Inter variant0', Tofu, Inter;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.roboto {
+  font-family: 'gf_Roboto variant1', Tofu, Roboto;
+}
+
+.roboto-condensed {
+  font-family: 'gf_Roboto_Condensed variant0', Tofu, 'Roboto Condensed';
+}
