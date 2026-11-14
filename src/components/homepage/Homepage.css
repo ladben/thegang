@@ -19,7 +19,9 @@
   gap: 10px;
   padding: 10px;
   border-radius: 8px;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' rx='8' ry='8' fill='none' stroke='%23D4AF37' stroke-opacity='0.5' stroke-width='1' stroke-dasharray='6 4'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' rx='8' ry='8' fill='none' stroke='%23D4AF37' stroke-opacity='0.5' stroke-width='2' stroke-dasharray='6 4'/%3e%3c/svg%3e");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .corners {
