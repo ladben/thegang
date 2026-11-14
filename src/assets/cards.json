@@ -148,7 +148,7 @@
         {
           "number": 7,
           "title": "Jack",
-          "description": "<p>Válasszatok egy játékost, aki a kezébe veszi a <strong>Jack specialista kártyát. Ezután a játékosnak el kell dobnia az egyik kézkártyáját (anélkül, hogy felfedné azt). A Jack kártya J (bubi) értéknek számít. Azonban nem tartozik semmilyen színhez, azaz nem használható Flush-hoz.</strong> Ha Jack és a másik 4 J kártya kombinációd van, akkor J-pókernek számít J-kísérő kártyával.</p>"
+          "description": "<p>Válasszatok egy játékost, aki a kezébe veszi a <strong>Jack specialista kártyát. Ezután a játékosnak el kell dobnia az egyik kézkártyáját (anélkül, hogy felfedné azt). A Jack kártya J (bubi) értéknek számít. Azonban nem tartozik semmilyen színhez, azaz nem használható flösshöz.</strong> Ha Jack és a másik 4 J kártya kombinációd van, akkor J-pókernek számít J-kísérő kártyával.</p>"
         },
         {
           "number": 8,
@@ -213,7 +213,7 @@
         {
           "number": 9,
           "title": "Ujjlenyomat-olvasó",
-          "description": "<p>Ez a kihívás újabb feltételt szab a betörés sikeréhez. <strong>Showdown során: mielőtt felfedné a lapjait az, akinél a legmagasabb piros zseton van, a többiek konzultálnak és megállapodnak egy olyan kártyakombinációban (rangban) (a „Magas laptól” a „Royal Flush-ig”),</strong> amelyről úgy vélik, hogy a legmagasabb piros zsetonnal rendelkező játékos <strong>kombinációja.</strong> Természetesen a legmagasabb piros zsetonnal rendelkező játékos nem vehet részt a beszélgetésben, és nem adhat tippeket sem. Ha a többiek tévednek, akkor a betörés elbukottnak minősül - még akkor is, ha a piros zsetonok sorrendje helyes volt.</p>"
+          "description": "<p>Ez a kihívás újabb feltételt szab a betörés sikeréhez. <strong>Showdown során: mielőtt felfedné a lapjait az, akinél a legmagasabb piros zseton van, a többiek konzultálnak és megállapodnak egy olyan kártyakombinációban (rangban) (a „Magas laptól” a „Royal flössig”),</strong> amelyről úgy vélik, hogy a legmagasabb piros zsetonnal rendelkező játékos <strong>kombinációja.</strong> Természetesen a legmagasabb piros zsetonnal rendelkező játékos nem vehet részt a beszélgetésben, és nem adhat tippeket sem. Ha a többiek tévednek, akkor a betörés elbukottnak minősül - még akkor is, ha a piros zsetonok sorrendje helyes volt.</p>"
         },
         {
           "number": 10,
