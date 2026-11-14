@@ -15,17 +15,15 @@ const Homepage = () => {
         borderWidth={4}
         borderRadius={16}
       >
-        <div className='dashed-border-wrapper'>
-          <div className='homepage-body'>
-            <div className='corners'>
-              <Embelishment position={'topleft'} />
-              <Embelishment position={'topright'} />
-            </div>
-            <HomepageContent />
-            <div className='corners'>
-              <Embelishment position={'bottomleft'} />
-              <Embelishment position={'bottomright'} />
-            </div>
+        <div className='homepage-body'>
+          <div className='corners'>
+            <Embelishment position={'topleft'} />
+            <Embelishment position={'topright'} />
+          </div>
+          <HomepageContent />
+          <div className='corners'>
+            <Embelishment position={'bottomleft'} />
+            <Embelishment position={'bottomright'} />
           </div>
         </div>
       </GradientBorder>
