@@ -14,6 +14,7 @@ const LanguagePicker = () => {
       <div className='lang-flags'>
         {flagLanguages.map((flagLang, index) => (
           <div
+            className='picker'
             onClick={() => setLang(flagLang.lang)}
             key={`flag-lang-${index}`}
           >
