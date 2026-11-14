@@ -1,0 +1,21 @@
+.homepage-language-picker {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.lang-title {
+  font-weight: 500;
+  font-size: 10px;
+  color: var(--color-golden);
+  text-transform: uppercase;
+}
+
+.lang-flags {
+  display: flex;
+  gap: 48px;
+}

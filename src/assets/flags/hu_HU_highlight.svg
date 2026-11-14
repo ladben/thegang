@@ -1,0 +1,22 @@
+<svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_31_260)">
+<mask id="mask0_31_260" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="68" height="68">
+<path d="M68 34C68 15.2223 52.7777 0 34 0C15.2223 0 0 15.2223 0 34C0 52.7777 15.2223 68 34 68C52.7777 68 68 52.7777 68 34Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_31_260)">
+<path d="M68 0H0V22.6667H68V0Z" fill="#CF2B3E"/>
+<path d="M68 22.6667H0V45.3334H68V22.6667Z" fill="white"/>
+<path d="M68 45.3333H0V68H68V45.3333Z" fill="#44704E"/>
+</g>
+<circle cx="34" cy="34" r="33" fill="url(#paint0_radial_31_260)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_31_260" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(34 -12.5) rotate(90) scale(35)">
+<stop offset="0.404496" stop-color="white" stop-opacity="0.8"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip0_31_260">
+<rect width="68" height="68" rx="34" fill="white"/>
+</clipPath>
+</defs>
+</svg>

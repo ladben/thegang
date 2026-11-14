@@ -28,7 +28,6 @@ const GradientBorder = ({
       : '0px',
   };
 
-  console.log(gradientCoverStyle);
   return (
     <div className='gradient-border' style={gradientBorderStyle}>
       <div className='gradient-border-cover' style={gradientCoverStyle}>
