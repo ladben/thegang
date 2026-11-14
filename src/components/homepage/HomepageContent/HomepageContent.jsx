@@ -10,6 +10,7 @@ const HomepageContent = () => {
             <p className='homepage-title'>The Gang</p>
           </div>
         </div>
+        <div style={{ color: 'white' }}>{window.innerWidth}</div>
       </div>
     </div>
   );
