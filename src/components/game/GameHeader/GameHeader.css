@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gradient-linear-zinc);
+  max-height: 0px;
+  padding: 0 16px;
+  opacity: 0;
+}
+
+.content-wrapper[game-animating] header {
+  animation: game-header-transition ease var(--animation-duration);
+}
+
+.content-wrapper[game-animated] header {
+  max-height: 70px;
+  padding: 16px 16px 0;
+  opacity: 1;
+}
+
+@keyframes game-header-transition {
+  0% {
+    max-height: 0px;
+    padding: 0 16px;
+    opacity: 0;
+  }
+
+  100% {
+    max-height: 70px;
+    padding: 16px 16px 0;
+    opacity: 1;
+  }
+}
+
+header h1 {
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid var(--color-amber-500-o30);
+  background-color: var(--color-zinc-100-o05);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 10%;
+  text-transform: uppercase;
+  color: var(--color-amber-400-o80);
+}

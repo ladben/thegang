@@ -1,0 +1,65 @@
+.content-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.content-wrapper[game-animating] {
+  transition: gap ease var(--animation-duration);
+  gap: 12px;
+}
+
+.content-wrapper[game-animated] {
+  gap: 12px;
+}
+
+main {
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.content-wrapper[game-animating] main {
+  animation: game-transition ease var(--animation-duration);
+}
+
+.content-wrapper[game-animated] main {
+  padding: 0 16px 16px;
+  gap: 12px;
+}
+
+@keyframes game-transition {
+  0% {
+    padding: 12px;
+    gap: 0px;
+  }
+
+  100% {
+    padding: 0 16px 16px;
+    gap: 12px;
+  }
+}
+
+.controls-and-progress {
+  display: flex;
+  flex-direction: column;
+  max-height: 0px;
+  opacity: 0;
+}
+
+.content-wrapper[game-animating] .controls-and-progress {
+  transition:
+    max-height ease var(--animation-duration),
+    opacity ease 500ms;
+
+  max-height: 130px;
+  opacity: 1;
+}
+
+.content-wrapper[game-animated] .controls-and-progress {
+  max-height: 130px;
+  opacity: 1;
+}

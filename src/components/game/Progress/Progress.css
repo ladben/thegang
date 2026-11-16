@@ -1,0 +1,23 @@
+.game-progress {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  border-radius: 16px;
+  background-color: var(--color-dark-o80);
+  border: 1px solid var(--color-button-gray);
+  backdrop-filter: blur(12px);
+  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+.progress-icons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0;
+  flex: 1;
+}
+
+.divider {
+  width: 1px;
+  background-color: var(--color-button-gray);
+}

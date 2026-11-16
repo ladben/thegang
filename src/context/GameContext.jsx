@@ -1,0 +1,181 @@
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
+
+import { cards } from '../assets/cards';
+
+const GameContext = createContext(null);
+
+const challengeCards = cards['en-EN'].challenge.cards.map(
+  (card) => card.number,
+);
+const specialistCards = cards['en-EN'].specialist.cards.map(
+  (card) => card.number,
+);
+
+const STORAGE_KEY = 'use-game';
+const SCHEMA_VERSION = 4;
+const DEFAULT_GAME = {
+  version: SCHEMA_VERSION,
+  round: 0,
+  maxValues: {
+    lost: 3,
+    won: 5,
+  },
+  progress: {
+    lost: 0,
+    won: 0,
+  },
+  challenge: {
+    available: challengeCards,
+    drawn: [],
+    discarded: [],
+  },
+  specialist: {
+    available: specialistCards,
+    drawn: [],
+    discarded: [],
+  },
+};
+
+const popRandom = (arr) => {
+  if (arr.length === 0) return undefined;
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr.splice(randomIndex, 1)[0];
+};
+
+export function GameProvider({ children }) {
+  const [game, setGameState] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.version === SCHEMA_VERSION) {
+          return parsed;
+        }
+      }
+    } catch {
+      // Fallback if localStorage contains corrupted JSON
+    }
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_GAME));
+    return DEFAULT_GAME;
+  });
+
+  // Uses functional state updater so rapid calls never read stale state
+  const setGame = useCallback((updater) => {
+    setGameState((prevGame) => {
+      const nextGame =
+        typeof updater === 'function' ? updater(prevGame) : updater;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(nextGame));
+      return nextGame;
+    });
+  }, []);
+
+  const cleanTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => clearTimeout(cleanTimeoutRef.current);
+  }, []);
+
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === STORAGE_KEY) {
+        try {
+          setGameState(
+            event.newValue ? JSON.parse(event.newValue) : DEFAULT_GAME,
+          );
+        } catch {
+          setGameState(DEFAULT_GAME);
+        }
+      } else if (event.key === null) {
+        setGameState(DEFAULT_GAME);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  const draw = useCallback(
+    (cardType) => {
+      setGame((prevGame) => {
+        const deck = prevGame[cardType];
+        if (!deck || deck.available.length === 0) return prevGame;
+
+        const newAvailable = [...deck.available];
+        const drawnCard = popRandom(newAvailable);
+
+        return {
+          ...prevGame,
+          [cardType]: {
+            ...deck,
+            available: newAvailable,
+            drawn: [...deck.drawn, drawnCard],
+          },
+        };
+      });
+    },
+    [setGame],
+  );
+
+  const advanceRound = useCallback(
+    ({ step = 1, roundResult = '' } = {}) => {
+      console.log({ step, roundResult });
+      setGame((prevGame) => {
+        const newRound = prevGame.round + step;
+        const newProgressLost =
+          roundResult === 'lost'
+            ? prevGame.progress.lost + 1
+            : prevGame.progress.lost;
+        const newProgressWon =
+          roundResult === 'won'
+            ? prevGame.progress.won + 1
+            : prevGame.progress.won;
+        return {
+          ...prevGame,
+          round: newRound,
+          progress: {
+            lost: newProgressLost,
+            won: newProgressWon,
+          },
+        };
+      });
+    },
+    [setGame],
+  );
+
+  const clean = useCallback(
+    (delay = 0) => {
+      clearTimeout(cleanTimeoutRef.current);
+
+      if (delay > 0) {
+        cleanTimeoutRef.current = setTimeout(() => {
+          setGame(DEFAULT_GAME);
+        }, delay);
+      } else {
+        setGame(DEFAULT_GAME);
+      }
+    },
+    [setGame],
+  );
+
+  return (
+    <GameContext.Provider value={{ game, setGame, draw, advanceRound, clean }}>
+      {children}
+    </GameContext.Provider>
+  );
+}
+
+export function useGame() {
+  const context = useContext(GameContext);
+  if (!context) {
+    throw new Error('useGame must be used inside a GameProvider');
+  }
+  return context;
+}
