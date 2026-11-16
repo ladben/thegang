@@ -7,6 +7,34 @@
   opacity: 0.2;
 }
 
+.bloom {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 540px;
+  height: 100svh;
+}
+
+.bloom-el {
+  width: 100%;
+  height: calc(50% + 140px);
+  border-radius: 540px;
+  filter: blur(64px);
+  opacity: 0.1;
+}
+
+.bloom-red {
+  background-color: var(--color-red-900);
+}
+
+.bloom-amber {
+  position: absolute;
+  bottom: 0;
+  background: var(--color-amber-600);
+}
+
 .app-wrapper {
   width: 100%;
   max-width: 540px;
