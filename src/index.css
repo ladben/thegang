@@ -4,7 +4,8 @@
   --color-dark-o80: #111111cc;
 
   --color-golden: #d4af37;
-  --color-golden-200: #fff2b2;
+  --color-golden-300: #e4cd81;
+  --color-golden-200: #fff2b3;
   --color-golden-o50: #d4af3780;
 
   --color-red-900: #82181a;
@@ -20,11 +21,15 @@
   --color-amber-500-o50: #fe9a0080;
   --color-amber-500-o30: #fe9a004d;
   --color-amber-400: #ffb900;
+  --color-amber-400-o80: #ffb900cc;
   --color-amber-100: #fef3c6;
 
+  --color-zinc-900: #0a0a0a;
+  --color-zinc-900-o00: #0a0a0a00;
   --color-zinc-500: #71717b;
   --color-zinc-300: #d8d3d4;
   --color-zinc-100: #f4f4f5;
+  --color-zinc-100-o05: #f4f4f50d;
 
   --color-button-gray: #2a2627;
   --color-button-gray-o80: #2a2627cc;
@@ -37,6 +42,11 @@
     var(--color-dark, #111111) 50%,
     #dedede 100%
   );
+  --gradient-linear-zinc: linear-gradient(
+    180deg,
+    var(--color-zinc-900, #0a0a0a) 0%,
+    var(--color-zinc-900-o00, #0a0a0a00) 100%
+  );
   --gradient-linear-golden: linear-gradient(
     to bottom right,
     #ffe57f 0%,
@@ -48,6 +58,30 @@
     #ffe57fcc 0%,
     var(--color-golden, #d4af37cc) 50%,
     #855b00cc 100%
+  );
+  --gradient-linear-button-red-to-black: linear-gradient(
+    90deg,
+    #460809 0%,
+    #82181a 50%,
+    #1b1718 100%
+  );
+  --gradient-linear-button-black-to-red: linear-gradient(
+    90deg,
+    #1b1718 0%,
+    #82181a 50%,
+    #460809 100%
+  );
+  --gradient-linear-button-amber-to-black: linear-gradient(
+    90deg,
+    #461901 0%,
+    #7b3306 50%,
+    #1b1718 100%
+  );
+  --gradient-linear-button-black-to-amber: linear-gradient(
+    90deg,
+    #1b1718 0%,
+    #7b3306 50%,
+    #461901 100%
   );
 }
 

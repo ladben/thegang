@@ -5,6 +5,8 @@
   background-size: 24px 24px;
   background-image: radial-gradient(var(--color-golden) 1px, #00000000 1px);
   opacity: 0.2;
+  pointer-events: none;
+  z-index: -10;
 }
 
 .bloom {
@@ -15,6 +17,8 @@
   width: 100%;
   max-width: 540px;
   height: 100svh;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .bloom-el {

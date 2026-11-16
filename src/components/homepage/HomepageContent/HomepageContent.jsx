@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../context/LanguageContext';
+import { useGame } from '../../../context/GameContext';
 import LanguagePicker from './LanguagePicker/LanguagePicker';
 import { appRoutes } from '../../../constants/appRoutes';
 
 import './HomepageContent.css';
 import HomepageHero from '../../../assets/graphics/Main_Icon.svg?react';
 
-const HomepageContent = () => {
+const HomepageContent = ({ isAnimating, isAnimated }) => {
   const { translate } = useLanguage();
+  const { game, advanceRound } = useGame();
   const navigate = useNavigate();
 
   const { GAME_ROUTE } = appRoutes;
@@ -28,11 +30,17 @@ const HomepageContent = () => {
       <LanguagePicker />
       <div
         onClick={() => {
+          if (game.round === 0) {
+            advanceRound();
+          }
           navigate(GAME_ROUTE);
         }}
         className='start-game-btn'
       >
-        {translate('start_game')}
+        {!isAnimating &&
+          !isAnimated &&
+          translate(game.round === 0 ? 'start_game' : 'continue_game')}
+        {(isAnimating || isAnimated) && translate('loading')}
       </div>
     </div>
   );

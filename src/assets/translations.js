@@ -1,6 +1,8 @@
 export const translations = {
   'en-EN': {
+    loading: 'Loading...',
     start_game: 'Start Game',
+    continue_game: 'Continue Game',
     vault_active: 'Vault {{number}} • active',
     gameControlButton: {
       defeat: 'Defeat',
@@ -28,7 +30,9 @@ export const translations = {
     },
   },
   'hu-HU': {
+    loading: 'Folyamatban...',
     start_game: 'Játék indítása',
+    continue_game: 'Játék folytatása',
     vault_active: '{{number}}. terem • aktív',
     gameControlButton: {
       defeat: 'Vereség',

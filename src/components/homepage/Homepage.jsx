@@ -4,7 +4,7 @@ import HomepageContent from './HomepageContent/HomepageContent';
 
 import './Homepage.css';
 
-const Homepage = () => {
+const Homepage = ({ isAnimating, isAnimated }) => {
   return (
     <div className='hp-wrapper'>
       <GradientBorder
@@ -18,7 +18,7 @@ const Homepage = () => {
             <Embelishment position={'topleft'} />
             <Embelishment position={'topright'} />
           </div>
-          <HomepageContent />
+          <HomepageContent isAnimating={isAnimating} isAnimated={isAnimated} />
           <div className='corners'>
             <Embelishment position={'bottomleft'} />
             <Embelishment position={'bottomright'} />
