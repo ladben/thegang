@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import GradientBorder from '../gradients/GradientBorder/GradientBorder';
 import Embelishment from '../Embelishment/Embelishment';
 import HomepageContent from './HomepageContent/HomepageContent';

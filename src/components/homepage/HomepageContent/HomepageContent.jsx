@@ -1,11 +1,17 @@
-import LanguagePicker from './LanguagePicker/LanguagePicker';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../context/LanguageContext';
+import LanguagePicker from './LanguagePicker/LanguagePicker';
+import { appRoutes } from '../../../constants/appRoutes';
 
 import './HomepageContent.css';
 import HomepageHero from '../../../assets/graphics/Main_Icon.svg?react';
 
 const HomepageContent = () => {
   const { translate } = useLanguage();
+  const navigate = useNavigate();
+
+  const { GAME_ROUTE } = appRoutes;
+
   return (
     <div className='homepage-content'>
       <div className='homepage-header'>
@@ -22,7 +28,7 @@ const HomepageContent = () => {
       <LanguagePicker />
       <div
         onClick={() => {
-          alert('START');
+          navigate(GAME_ROUTE);
         }}
         className='start-game-btn'
       >
