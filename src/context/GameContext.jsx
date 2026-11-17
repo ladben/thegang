@@ -146,7 +146,8 @@ export function GameProvider({ children }) {
         idx === lastIndex ? { ...item, discarded: true } : item,
       );
 
-      // 2. Add the card number to that deck's discarded array
+      // 2. Remove the discarded card's number from drawn and add it to discarded
+      const updatedDrawn = deck.drawn.filter((num) => num !== lastCard.number);
       const updatedDiscarded = [...deck.discarded, lastCard.number];
 
       // 3. Draw a new card of the same type if any remain available
@@ -159,7 +160,7 @@ export function GameProvider({ children }) {
           : updatedSequence;
 
       const finalDrawn =
-        drawnCard !== undefined ? [...deck.drawn, drawnCard] : deck.drawn;
+        drawnCard !== undefined ? [...updatedDrawn, drawnCard] : updatedDrawn;
 
       return {
         ...prevGame,
