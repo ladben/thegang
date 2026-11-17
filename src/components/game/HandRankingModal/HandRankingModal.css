@@ -1,0 +1,83 @@
+.handmodal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.handmodal[is-open] {
+  pointer-events: all;
+}
+
+.handmodal-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--color-dark) 56px, var(--color-dark-o80));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity ease var(--animation-duration-2);
+}
+
+.handmodal[is-open] .handmodal-backdrop {
+  opacity: 1;
+}
+
+.handmodal-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.svg-wrapper.close-modal {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+
+  transition: opacity ease var(--animation-duration-2);
+  opacity: 0;
+}
+
+.handmodal[is-open] .svg-wrapper.close-modal {
+  opacity: 1;
+}
+
+.svg-wrapper.close-modal svg {
+  width: 24px;
+  height: 24px;
+}
+.svg-wrapper.close-modal svg path {
+  fill: var(--color-zinc-300);
+}
+
+.handmodal-graphics {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+
+  transition:
+    opacity ease var(--animation-duration-2),
+    transform ease var(--animation-duration);
+  opacity: 0;
+  transform: scale(0.9) translateY(-20px);
+}
+
+.handmodal[is-open] .handmodal-graphics {
+  opacity: 1;
+  transform: scale(1) translateY(0px);
+}
+
+.svg-wrapper.ranking-graphics {
+  width: 100%;
+  height: 100%;
+}
+
+.svg-wrapper.ranking-graphics svg {
+  width: 100%;
+  height: 100%;
+}

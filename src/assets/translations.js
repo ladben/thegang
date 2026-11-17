@@ -28,6 +28,19 @@ export const translations = {
         weak_and_common: 'weak and common',
       },
     },
+    endResult: {
+      won: {
+        title: 'Successful heist',
+        text: 'The Gang secured all 5 Gold Bars!',
+      },
+      lost: {
+        title: 'Busted',
+        text: 'The vault system went into lockdown!',
+      },
+      alarms: 'Alarms',
+      goldbars: 'Gold Bars',
+      start_new_heist: 'Start New Heist',
+    },
   },
   'hu-HU': {
     loading: 'Folyamatban...',
@@ -57,6 +70,19 @@ export const translations = {
         strong_and_rare: 'erős és ritka',
         weak_and_common: 'gyenge és gyakori',
       },
+    },
+    endResult: {
+      won: {
+        title: 'Sikeres rablás',
+        text: 'Megszereztétek mind az 5 aranyrudat!',
+      },
+      lost: {
+        title: 'Elkaptak',
+        text: 'A páncéltermek biztonsági zárai aktiválódtak!',
+      },
+      alarms: 'Riasztók',
+      goldbars: 'Aranyrudak',
+      start_new_heist: 'Kezdj új rablást',
     },
   },
 };

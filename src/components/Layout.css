@@ -44,4 +44,5 @@
   max-width: 540px;
   height: 100svh;
   margin: auto;
+  position: relative;
 }

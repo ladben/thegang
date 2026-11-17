@@ -4,6 +4,8 @@ import GameHeader from './GameHeader/GameHeader';
 import Progress from './Progress/Progress';
 import Controls from './Controls/Controls';
 import FlipCard from './FlipCard/FlipCard';
+import EndModal from './EndModal/EndModal';
+import HandRankingModal from './HandRankingModal/HandRankingModal';
 
 import './Game.css';
 
@@ -11,6 +13,7 @@ const Game = () => {
   const { gameResult } = useGame();
   const [isAnimating, setIsAnimating] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
+  const [isHandRankingModalOpen, setIsHandRankingModalOpen] = useState(false);
 
   const timeoutRef = useRef(null);
 
@@ -22,6 +25,10 @@ const Game = () => {
       setIsAnimated(true);
       setIsAnimating(false);
     }, ANIMATION_DURATION);
+
+    return () => {
+      clearTimeout(timeoutRef.current);
+    };
   }, []);
 
   const wrapperStyle = {
@@ -37,7 +44,7 @@ const Game = () => {
       game-animated={isAnimated ? '' : null}
       style={wrapperStyle}
     >
-      <GameHeader />
+      <GameHeader toggleHandRanking={setIsHandRankingModalOpen} />
       <main>
         <div className='controls-and-progress'>
           <Progress />
@@ -45,6 +52,11 @@ const Game = () => {
         </div>
         <FlipCard isAnimating={isAnimating} isAnimated={isAnimated} />
       </main>
+      <HandRankingModal
+        isOpen={isHandRankingModalOpen}
+        toggleHandRanking={setIsHandRankingModalOpen}
+      />
+      {gameResult && <EndModal result={gameResult} />}
     </div>
   );
 };
