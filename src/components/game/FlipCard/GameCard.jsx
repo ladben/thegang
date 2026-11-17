@@ -16,7 +16,6 @@ const GameCard = ({ gameCard }) => {
     (el) => el.number === gameCard.number,
   );
 
-  console.log(selectedCard);
   return (
     <div className='game-card' card-type={gameCard.type}>
       <div className='card-header'>

@@ -129,6 +129,51 @@ export function GameProvider({ children }) {
     [setGame],
   );
 
+  const discardLast = useCallback(() => {
+    setGame((prevGame) => {
+      const sequence = prevGame.cardSequence || [];
+      if (sequence.length === 0) return prevGame;
+
+      const lastIndex = sequence.length - 1;
+      const lastCard = sequence[lastIndex];
+      const cardType = lastCard.type;
+      const deck = prevGame[cardType];
+
+      if (!deck) return prevGame;
+
+      // 1. Mark the last card in cardSequence as discarded (immutably)
+      const updatedSequence = sequence.map((item, idx) =>
+        idx === lastIndex ? { ...item, discarded: true } : item,
+      );
+
+      // 2. Add the card number to that deck's discarded array
+      const updatedDiscarded = [...deck.discarded, lastCard.number];
+
+      // 3. Draw a new card of the same type if any remain available
+      const newAvailable = [...deck.available];
+      const drawnCard = popRandom(newAvailable);
+
+      const finalSequence =
+        drawnCard !== undefined
+          ? [...updatedSequence, { type: cardType, number: drawnCard }]
+          : updatedSequence;
+
+      const finalDrawn =
+        drawnCard !== undefined ? [...deck.drawn, drawnCard] : deck.drawn;
+
+      return {
+        ...prevGame,
+        cardSequence: finalSequence,
+        [cardType]: {
+          ...deck,
+          available: newAvailable,
+          drawn: finalDrawn,
+          discarded: updatedDiscarded,
+        },
+      };
+    });
+  }, [setGame]);
+
   const advanceRound = useCallback(
     ({ step = 1, roundResult = '' } = {}) => {
       setGame((prevGame) => {
@@ -168,10 +213,6 @@ export function GameProvider({ children }) {
     },
     [setGame],
   );
-
-  const discardLast = useCallback(() => {
-    console.log('DISCARDING CARD');
-  }, []);
 
   return (
     <GameContext.Provider
