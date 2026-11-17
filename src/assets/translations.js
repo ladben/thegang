@@ -3,7 +3,7 @@ export const translations = {
     loading: 'Loading...',
     start_game: 'Start Game',
     continue_game: 'Continue Game',
-    vault_active: 'Vault {{number}} • active',
+    vault_active: 'Round {{number}} • active',
     gameControlButton: {
       defeat: 'Defeat',
       victory: 'Victory',
@@ -33,7 +33,7 @@ export const translations = {
     loading: 'Folyamatban...',
     start_game: 'Játék indítása',
     continue_game: 'Játék folytatása',
-    vault_active: '{{number}}. terem • aktív',
+    vault_active: '{{number}}. kör • aktív',
     gameControlButton: {
       defeat: 'Vereség',
       victory: 'Győzelem',

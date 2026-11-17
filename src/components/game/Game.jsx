@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useGame } from '../../context/GameContext';
 import GameHeader from './GameHeader/GameHeader';
 import Progress from './Progress/Progress';
 import Controls from './Controls/Controls';
@@ -7,12 +8,13 @@ import FlipCard from './FlipCard/FlipCard';
 import './Game.css';
 
 const Game = () => {
+  const { gameResult } = useGame();
   const [isAnimating, setIsAnimating] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
 
   const timeoutRef = useRef(null);
 
-  const ANIMATION_DURATION = 2000;
+  const ANIMATION_DURATION = 1500;
 
   useEffect(() => {
     setIsAnimating(true);

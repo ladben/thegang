@@ -21,3 +21,8 @@
   font-size: 12px;
   font-weight: 700;
 }
+
+.button[discard-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

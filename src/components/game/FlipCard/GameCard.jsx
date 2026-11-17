@@ -10,11 +10,13 @@ import './GameCard.css';
 
 const GameCard = ({ gameCard }) => {
   const { lang, translate } = useLanguage();
-  const { discardLast } = useGame();
+  const { discardLast, canDiscard } = useGame();
 
   const selectedCard = cards[lang][gameCard.type].cards.find(
     (el) => el.number === gameCard.number,
   );
+
+  console.log(canDiscard);
 
   return (
     <div className='game-card' card-type={gameCard.type}>
@@ -54,6 +56,7 @@ const GameCard = ({ gameCard }) => {
                   ? 'var(--color-amber-400)'
                   : 'var(--color-red-400',
             }}
+            disabled={!canDiscard[gameCard.type]}
             clickHandler={() => {
               discardLast();
             }}

@@ -21,9 +21,12 @@ const Button = ({
   text,
   layout,
   style,
+  disabled = false,
   clickHandler = () => {},
 }) => {
   const IconComponent = icon ? ICONS[icon] : null;
+
+  console.log({ disabled });
 
   return (
     <div
@@ -31,6 +34,7 @@ const Button = ({
       onClick={clickHandler}
       button-type={type}
       style={style}
+      discard-disabled={disabled ? '' : null}
     >
       {text && layout === TEXT_ICON && <p>{text}</p>}
       <div className='svg-wrapper'>
