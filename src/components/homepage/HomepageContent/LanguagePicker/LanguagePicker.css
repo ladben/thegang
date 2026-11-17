@@ -28,7 +28,7 @@
 
 .content-wrapper[game-animating] .lang-title {
   transition:
-    opacity ease 500ms,
+    opacity ease var(--animation-duration-2),
     max-height ease var(--animation-duration);
 
   opacity: 0;
@@ -62,8 +62,8 @@
 
 .content-wrapper[game-animating] .picker {
   transition:
-    transform ease 500ms,
-    opacity ease 250ms;
+    transform ease var(--animation-duration-2),
+    opacity ease var(--animation-duration-4);
 }
 
 .content-wrapper[game-animating] .picker:first-child,

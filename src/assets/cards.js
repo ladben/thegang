@@ -151,7 +151,7 @@ export const cards = {
           number: 3,
           title: 'Hitelező',
           description:
-            '<p>Miután kiosztottátok az <strong>1. körben a lapokat, mindenki megmondja,</strong> hány darab <strong>„királyi lapja” van (J, Q, K).</strong></p><p><em>Példa: Arsène kezében van: K, J. Ő azt mondja: 2 királyi kártyám van. Bonnie kezében van: Q, 3-as. Ő azt mondja: 1 királyi kártyám van. Clyde kezében van: A, 10-es. Ő azt mondja: 0 királyi kártyám van stb.</em></p>',
+            '<p>Miután kiosztottátok az <strong>1. körben a lapokat, mindenki megmondja,</strong> hány darab <strong>„királyi lapja” van (J, Q, K).</strong></p><p><em>Példa: Arsène kezében van: K, J. Ő azt mondja: 2 királyi kártyám van. Bonnie kezében van: Q, 3-as. Ő azt mondja: 1 királyi kártyám van. Clyde kezében van: A, 10-es. Ő azt mondja: 0 királyi kártyám van, stb.</em></p>',
         },
         {
           number: 4,

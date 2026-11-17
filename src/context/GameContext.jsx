@@ -19,10 +19,11 @@ const specialistCards = cards['en-EN'].specialist.cards.map(
 );
 
 const STORAGE_KEY = 'use-game';
-const SCHEMA_VERSION = 4;
+const SCHEMA_VERSION = 5;
 const DEFAULT_GAME = {
   version: SCHEMA_VERSION,
   round: 0,
+  cardSequence: [{ type: 'cover' }, { type: 'cover' }],
   maxValues: {
     lost: 3,
     won: 5,
@@ -105,6 +106,13 @@ export function GameProvider({ children }) {
   const draw = useCallback(
     (cardType) => {
       setGame((prevGame) => {
+        if (
+          prevGame.progress.won >= prevGame.maxValues.won ||
+          prevGame.progress.lost >= prevGame.maxValues.lost
+        ) {
+          return prevGame;
+        }
+
         const deck = prevGame[cardType];
         if (!deck || deck.available.length === 0) return prevGame;
 
@@ -113,6 +121,10 @@ export function GameProvider({ children }) {
 
         return {
           ...prevGame,
+          cardSequence: [
+            ...(prevGame.cardSequence || []),
+            { type: cardType, number: drawnCard },
+          ],
           [cardType]: {
             ...deck,
             available: newAvailable,
@@ -124,11 +136,97 @@ export function GameProvider({ children }) {
     [setGame],
   );
 
+  const discardLast = useCallback(() => {
+    setGame((prevGame) => {
+      if (
+        prevGame.progress.won >= prevGame.maxValues.won ||
+        prevGame.progress.lost >= prevGame.maxValues.lost
+      ) {
+        return prevGame;
+      }
+
+      const sequence = prevGame.cardSequence || [];
+      if (sequence.length === 0) return prevGame;
+
+      const lastIndex = sequence.length - 1;
+      const lastCard = sequence[lastIndex];
+      const cardType = lastCard.type;
+      const deck = prevGame[cardType];
+
+      if (!deck) return prevGame;
+
+      const maxVal =
+        cardType === 'challenge'
+          ? prevGame.maxValues.won
+          : prevGame.maxValues.lost;
+      const currVal =
+        cardType === 'challenge'
+          ? prevGame.progress.won
+          : prevGame.progress.lost;
+
+      if (deck.available.length <= maxVal - currVal - 1) return prevGame;
+
+      // 1. Mark the last card in cardSequence as discarded (immutably)
+      const updatedSequence = sequence.map((item, idx) =>
+        idx === lastIndex ? { ...item, discarded: true } : item,
+      );
+
+      // 2. Remove the discarded card's number from drawn and add it to discarded
+      const updatedDrawn = deck.drawn.filter((num) => num !== lastCard.number);
+      const updatedDiscarded = [...deck.discarded, lastCard.number];
+
+      // 3. Draw a new card of the same type if any remain available
+      const newAvailable = [...deck.available];
+      const drawnCard = popRandom(newAvailable);
+
+      const finalSequence =
+        drawnCard !== undefined
+          ? [...updatedSequence, { type: cardType, number: drawnCard }]
+          : updatedSequence;
+
+      const finalDrawn =
+        drawnCard !== undefined ? [...updatedDrawn, drawnCard] : updatedDrawn;
+
+      return {
+        ...prevGame,
+        cardSequence: finalSequence,
+        [cardType]: {
+          ...deck,
+          available: newAvailable,
+          drawn: finalDrawn,
+          discarded: updatedDiscarded,
+        },
+      };
+    });
+  }, [setGame]);
+
+  const gameResult =
+    game.progress.won >= game.maxValues.won
+      ? 'won'
+      : game.progress.lost >= game.maxValues.lost
+        ? 'lost'
+        : null;
+
+  const canDiscard = {
+    specialist:
+      Math.max(game.maxValues.lost - game.progress.lost - 1, 0) <
+      game.specialist.available.length,
+    challenge:
+      Math.max(game.maxValues.won - game.progress.won - 1, 0) <
+      game.challenge.available.length,
+  };
+
   const advanceRound = useCallback(
     ({ step = 1, roundResult = '' } = {}) => {
-      console.log({ step, roundResult });
       setGame((prevGame) => {
-        const newRound = prevGame.round + step;
+        // Prevent further updates if the game has already ended
+        if (
+          prevGame.progress.won >= prevGame.maxValues.won ||
+          prevGame.progress.lost >= prevGame.maxValues.lost
+        ) {
+          return prevGame;
+        }
+
         const newProgressLost =
           roundResult === 'lost'
             ? prevGame.progress.lost + 1
@@ -137,6 +235,9 @@ export function GameProvider({ children }) {
           roundResult === 'won'
             ? prevGame.progress.won + 1
             : prevGame.progress.won;
+
+        const newRound = prevGame.round + step;
+
         return {
           ...prevGame,
           round: newRound,
@@ -166,7 +267,18 @@ export function GameProvider({ children }) {
   );
 
   return (
-    <GameContext.Provider value={{ game, setGame, draw, advanceRound, clean }}>
+    <GameContext.Provider
+      value={{
+        game,
+        setGame,
+        draw,
+        advanceRound,
+        clean,
+        discardLast,
+        gameResult,
+        canDiscard,
+      }}
+    >
       {children}
     </GameContext.Provider>
   );

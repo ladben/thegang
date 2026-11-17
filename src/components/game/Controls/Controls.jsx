@@ -12,8 +12,8 @@ const Controls = () => {
       <div
         className='game-control defeat'
         onClick={() => {
-          draw('specialist');
           advanceRound({ roundResult: 'lost' });
+          draw('specialist');
         }}
       >
         {translate('gameControlButton.defeat')}
@@ -21,8 +21,8 @@ const Controls = () => {
       <div
         className='game-control victory'
         onClick={() => {
-          draw('challenge');
           advanceRound({ roundResult: 'won' });
+          draw('challenge');
         }}
       >
         {translate('gameControlButton.victory')}

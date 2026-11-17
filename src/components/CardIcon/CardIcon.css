@@ -1,0 +1,14 @@
+.card-icon[icon-placement='topright'] {
+  transform: rotateY(180deg);
+}
+.card-icon[icon-placement='bottomleft'] {
+  transform: rotateX(180deg);
+}
+.card-icon[icon-placement='bottomright'] {
+  transform: rotate(180deg);
+}
+
+.svg-wrapper.card-icon svg {
+  width: 40px;
+  height: 40px;
+}
