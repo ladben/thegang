@@ -19,10 +19,11 @@ const specialistCards = cards['en-EN'].specialist.cards.map(
 );
 
 const STORAGE_KEY = 'use-game';
-const SCHEMA_VERSION = 4;
+const SCHEMA_VERSION = 5;
 const DEFAULT_GAME = {
   version: SCHEMA_VERSION,
   round: 0,
+  cardSequence: [{ type: 'cover' }, { type: 'cover' }],
   maxValues: {
     lost: 3,
     won: 5,
@@ -113,6 +114,10 @@ export function GameProvider({ children }) {
 
         return {
           ...prevGame,
+          cardSequence: [
+            ...(prevGame.cardSequence || []),
+            { type: cardType, number: drawnCard },
+          ],
           [cardType]: {
             ...deck,
             available: newAvailable,
@@ -126,7 +131,6 @@ export function GameProvider({ children }) {
 
   const advanceRound = useCallback(
     ({ step = 1, roundResult = '' } = {}) => {
-      console.log({ step, roundResult });
       setGame((prevGame) => {
         const newRound = prevGame.round + step;
         const newProgressLost =
@@ -165,8 +169,14 @@ export function GameProvider({ children }) {
     [setGame],
   );
 
+  const discardLast = useCallback(() => {
+    console.log('DISCARDING CARD');
+  }, []);
+
   return (
-    <GameContext.Provider value={{ game, setGame, draw, advanceRound, clean }}>
+    <GameContext.Provider
+      value={{ game, setGame, draw, advanceRound, clean, discardLast }}
+    >
       {children}
     </GameContext.Provider>
   );

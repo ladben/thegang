@@ -1,17 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import GameHeader from './GameHeader/GameHeader';
-import Homepage from '../homepage/Homepage';
 import Progress from './Progress/Progress';
 import Controls from './Controls/Controls';
+import FlipCard from './FlipCard/FlipCard';
 
 import './Game.css';
 
 const Game = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
+
   const timeoutRef = useRef(null);
 
-  const ANIMATION_DURATION = 1000;
+  const ANIMATION_DURATION = 2000;
 
   useEffect(() => {
     setIsAnimating(true);
@@ -23,6 +24,8 @@ const Game = () => {
 
   const wrapperStyle = {
     '--animation-duration': `${ANIMATION_DURATION}ms`,
+    '--animation-duration-2': `${ANIMATION_DURATION / 2}ms`,
+    '--animation-duration-4': `${ANIMATION_DURATION / 4}ms`,
   };
 
   return (
@@ -38,7 +41,7 @@ const Game = () => {
           <Progress />
           <Controls />
         </div>
-        <Homepage isAnimating={isAnimating} isAnimated={isAnimated} />
+        <FlipCard isAnimating={isAnimating} isAnimated={isAnimated} />
       </main>
     </div>
   );

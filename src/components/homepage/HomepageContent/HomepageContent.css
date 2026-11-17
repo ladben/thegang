@@ -54,7 +54,7 @@
 
 .content-wrapper[game-animating] .homepage-subtitle {
   transition:
-    opacity ease 500ms,
+    opacity ease var(--animation-duration-2),
     max-height ease var(--animation-duration),
     padding ease var(--animation-duration);
   opacity: 0;
@@ -139,7 +139,11 @@
 }
 
 .content-wrapper[game-animating] .start-game-btn {
-  transition: opacity 500ms ease 500ms;
+  transition:
+    opacity var(--animation-duration-2) ease var(--animation-duration-2),
+    max-height var(--animation-duration-2) ease var(--animation-duration-2),
+    padding var(--animation-duration-2) ease var(--animation-duration-2),
+    border var(--animation-duration-2) ease var(--animation-duration-2);
 
   opacity: 0;
   max-height: 0px;

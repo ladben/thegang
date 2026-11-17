@@ -1,7 +1,7 @@
 import { buttonConstants } from '../../constants/buttonConstants';
 import XIcon from '../../assets/icons/x_icon.svg?react';
 import CardsIcon from '../../assets/icons/cards.svg?react';
-// import TrashIcon from '../../assets/icons/trash.svg?react';
+import TrashIcon from '../../assets/icons/trash.svg?react';
 
 import './Button.css';
 
@@ -12,7 +12,7 @@ const { XICON, CARDS, TRASH } = ICON;
 const ICONS = {
   [XICON]: XIcon,
   [CARDS]: CardsIcon,
-  // [TRASH]: TrashIcon,
+  [TRASH]: TrashIcon,
 };
 
 const Button = ({

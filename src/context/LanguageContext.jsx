@@ -67,28 +67,8 @@ export function LanguageProvider({ children }) {
     [lang],
   );
 
-  // Cards helper with fallback and simple {{variable}} replacement
-  const card = useCallback(
-    (key, vars = {}) => {
-      const dict = cards[lang] || cards[DEFAULT_LANG];
-      let text =
-        getNestedValue(dict, key) ??
-        getNestedValue(cards[DEFAULT_LANG], key) ??
-        key;
-
-      if (typeof text !== 'string') return key;
-
-      Object.entries(vars).forEach(([varKey, value]) => {
-        text = text.replaceAll(`{{${varKey}}}`, String(value));
-      });
-
-      return text;
-    },
-    [lang],
-  );
-
   return (
-    <LanguageContext.Provider value={{ lang, setLang, translate, card }}>
+    <LanguageContext.Provider value={{ lang, setLang, translate }}>
       {children}
     </LanguageContext.Provider>
   );

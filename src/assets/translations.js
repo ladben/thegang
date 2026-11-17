@@ -38,7 +38,7 @@ export const translations = {
       defeat: 'Vereség',
       victory: 'Győzelem',
     },
-    discard_redraw: 'Kártya eldobása és újrahúzás',
+    discard_redraw: 'Eldobás és újrahúzás',
     handRanking: {
       hand_ranking: 'Kézértékek',
       hands: {

@@ -1,0 +1,55 @@
+.card-header-underline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+}
+
+.underline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.underline-right {
+  flex-direction: row-reverse;
+}
+
+.underline-circle {
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+
+.underline-line {
+  height: 1px;
+  width: 100%;
+}
+
+.game-card[card-type='challenge'] .underline-circle,
+.game-card[card-type='challenge'] .underline-line {
+  background-color: var(--color-amber-600);
+}
+
+.game-card[card-type='specialist'] .underline-circle,
+.game-card[card-type='specialist'] .underline-line {
+  background-color: var(--color-red-500);
+}
+
+.card-header-underline p {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 10%;
+  text-transform: uppercase;
+  color: white;
+}
+
+.game-card[card-type='challenge'] .card-header-underline p {
+  color: var(--color-amber-600);
+}
+
+.game-card[card-type='specialist'] .card-header-underline p {
+  color: var(--color-red-500);
+}
