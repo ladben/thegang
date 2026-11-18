@@ -6,7 +6,6 @@ import {
   useCallback,
 } from 'react';
 import { translations } from '../assets/translations';
-import { cards } from '../assets/cards';
 
 const LanguageContext = createContext(null);
 

@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
 import XIcon from '../../../assets/icons/x_icon.svg?react';
-import HandRanking from '../../../assets/graphics/Hand_Ranking.svg?react';
+import { useHandRanking } from '../../../hooks/useHandRanking';
 
 import './HandRankingModal.css';
 
 const HandRankingModal = ({ isOpen, toggleHandRanking }) => {
+  const HandRankingSvg = useHandRanking();
+
   const ANIMATION_DURATION = 1000;
   const modalStyle = {
     '--animation-duration': `${ANIMATION_DURATION}ms`,
@@ -28,7 +29,7 @@ const HandRankingModal = ({ isOpen, toggleHandRanking }) => {
         </div>
         <div className='handmodal-graphics'>
           <div className='svg-wrapper ranking-graphics'>
-            <HandRanking />
+            <HandRankingSvg />
           </div>
         </div>
       </div>
