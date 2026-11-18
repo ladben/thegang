@@ -26,8 +26,6 @@ const Button = ({
 }) => {
   const IconComponent = icon ? ICONS[icon] : null;
 
-  console.log({ disabled });
-
   return (
     <div
       className='button'
