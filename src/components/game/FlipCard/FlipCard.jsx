@@ -54,10 +54,16 @@ const FlipCard = ({ isAnimating, isAnimated }) => {
           transform: `rotateY(${(game.cardSequence.length - 2) * -180}deg)`,
         }}
       >
-        <div className='flip-card-face'>
+        <div
+          className='flip-card-face'
+          inactive={game.cardSequence.length % 2 === 0 ? null : ''}
+        >
           {renderCard(getSide('a', game.cardSequence))}
         </div>
-        <div className='flip-card-face flip-card-back'>
+        <div
+          className='flip-card-face flip-card-back'
+          inactive={game.cardSequence.length % 2 === 0 ? '' : null}
+        >
           {renderCard(getSide('b', game.cardSequence))}
         </div>
       </div>

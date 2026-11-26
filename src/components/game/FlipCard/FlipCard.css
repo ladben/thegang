@@ -21,6 +21,10 @@
   -webkit-backface-visibility: hidden; /* Needed for mobile Safari */
 }
 
+.flip-card-face[inactive] {
+  pointer-events: none;
+}
+
 .flip-card-back {
   transform: rotateY(180deg);
 }
