@@ -1,0 +1,28 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-button-gray-o80);
+  border-radius: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button[button-type='amber'] {
+  border: 1px solid var(--color-amber-500-o30);
+}
+
+.button[button-type='red'] {
+  border: 1px solid var(--color-red-500-o30);
+}
+
+.button p {
+  color: var(--color-zinc-300);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.button[discard-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
