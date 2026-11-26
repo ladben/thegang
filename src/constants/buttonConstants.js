@@ -3,6 +3,7 @@ export const buttonConstants = {
     NEUTRAL: 'neutral',
     AMBER: 'amber',
     RED: 'red',
+    GOLD: 'gold',
   },
   ICON: {
     CARDS: 'cards',

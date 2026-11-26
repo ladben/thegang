@@ -22,6 +22,7 @@ const Button = ({
   layout,
   style,
   disabled = false,
+  gradient = false,
   clickHandler = () => {},
 }) => {
   const IconComponent = icon ? ICONS[icon] : null;
@@ -33,12 +34,16 @@ const Button = ({
       button-type={type}
       style={style}
       discard-disabled={disabled ? '' : null}
+      bg-gradient={gradient ? '' : null}
     >
       {text && layout === TEXT_ICON && <p>{text}</p>}
-      <div className='svg-wrapper'>
-        <IconComponent />
-      </div>
+      {!!icon && (
+        <div className='svg-wrapper'>
+          <IconComponent />
+        </div>
+      )}
       {text && layout === ICON_TEXT && <p>{text}</p>}
+      {text && !icon && <p>{text}</p>}
     </div>
   );
 };

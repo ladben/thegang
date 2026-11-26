@@ -4,6 +4,7 @@ import { cards } from '../../../assets/cards';
 import CardIcon from '../../CardIcon/CardIcon';
 import Underline from './Underline';
 import Button from '../../Button/Button';
+import ScrollBox from '../../ScrollBox/ScrollBox';
 
 import { buttonConstants } from '../../../constants/buttonConstants';
 import './GameCard.css';
@@ -15,6 +16,11 @@ const GameCard = ({ gameCard }) => {
   const selectedCard = cards[lang][gameCard.type].cards.find(
     (el) => el.number === gameCard.number,
   );
+
+  const colors = {
+    challenge: 'amber',
+    specialist: 'red',
+  };
 
   return (
     <div className='game-card' card-type={gameCard.type}>
@@ -31,10 +37,12 @@ const GameCard = ({ gameCard }) => {
         <Underline title={gameCard.type} />
       </div>
       <div className='card-body-wrapper'>
-        <div
-          className='card-body'
-          dangerouslySetInnerHTML={{ __html: selectedCard.description }}
-        />
+        <ScrollBox color={colors[gameCard.type]}>
+          <div
+            className='card-body'
+            dangerouslySetInnerHTML={{ __html: selectedCard.description }}
+          />
+        </ScrollBox>
       </div>
       <div className='card-footer'>
         <CardIcon

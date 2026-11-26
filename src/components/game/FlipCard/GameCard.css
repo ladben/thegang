@@ -58,33 +58,9 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-right: 10px;
   color: var(--color-zinc-300);
   font-weight: 400;
   line-height: 22px;
-  overflow-y: auto;
-  max-height: 100%;
-}
-
-.card-body::-webkit-scrollbar {
-  width: 4px;
-  border-radius: 2px;
-}
-
-.card-body::-webkit-scrollbar-thumb {
-  border-radius: 2px;
-}
-
-.game-card[card-type='challenge'] .card-body::-webkit-scrollbar,
-.game-card[card-type='challenge'] .card-body::-webkit-scrollbar-thumb {
-  background-color: var(--color-amber-500-o30);
-}
-
-.game-card[card-type='specialist'] .card-body::-webkit-scrollbar {
-  background-color: var(--color-red-500-o30);
-}
-.game-card[card-type='specialist'] .card-body::-webkit-scrollbar-thumb {
-  background-color: var(--color-red-500-o60);
 }
 
 .card-footer {

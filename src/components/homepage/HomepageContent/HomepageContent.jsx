@@ -3,6 +3,8 @@ import { useLanguage } from '../../../context/LanguageContext';
 import { useGame } from '../../../context/GameContext';
 import LanguagePicker from './LanguagePicker/LanguagePicker';
 import { appRoutes } from '../../../constants/appRoutes';
+import Button from '../../Button/Button';
+import { buttonConstants } from '../../../constants/buttonConstants';
 
 import './HomepageContent.css';
 import HomepageHero from '../../../assets/graphics/Main_Icon.svg?react';
@@ -28,20 +30,36 @@ const HomepageContent = ({ isAnimating, isAnimated }) => {
         <HomepageHero />
       </div>
       <LanguagePicker />
-      <div
+      <div className='game-buttons'>
+        <Button
+          type={buttonConstants.TYPE.GOLD}
+          text={
+            !isAnimating && !isAnimated
+              ? translate(game.round === 0 ? 'start_game' : 'continue_game')
+              : translate('loading')
+          }
+          clickHandler={() => {
+            if (game.round === 0) {
+              advanceRound();
+            }
+            navigate(GAME_ROUTE);
+          }}
+        />
+      </div>
+      {/* <div
         onClick={() => {
           if (game.round === 0) {
             advanceRound();
           }
           navigate(GAME_ROUTE);
         }}
-        className='start-game-btn'
+        className='game-buttons'
       >
         {!isAnimating &&
           !isAnimated &&
           translate(game.round === 0 ? 'start_game' : 'continue_game')}
         {(isAnimating || isAnimated) && translate('loading')}
-      </div>
+      </div> */}
     </div>
   );
 };

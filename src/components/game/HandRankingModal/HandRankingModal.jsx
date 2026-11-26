@@ -14,7 +14,15 @@ const HandRankingModal = ({ isOpen, toggleHandRanking }) => {
 
   return (
     <div is-open={isOpen ? '' : null} className='handmodal' style={modalStyle}>
-      <div className='handmodal-backdrop'></div>
+      <div
+        className='handmodal-backdrop'
+        onClick={() => {
+          toggleHandRanking((prevState) => {
+            const newState = !prevState;
+            return newState;
+          });
+        }}
+      ></div>
       <div className='handmodal-content'>
         <div
           onClick={() => {
