@@ -22,6 +22,7 @@ const GameHeader = ({ toggleHandRanking }) => {
         type={buttonConstants.TYPE.AMBER}
         icon={buttonConstants.ICON.CARDS}
         style={{ width: '40px', height: '40px' }}
+        gradient
       />
       <h1>{translate('vault_active', { number: game.round })}</h1>
       <Button
@@ -32,6 +33,7 @@ const GameHeader = ({ toggleHandRanking }) => {
         type={buttonConstants.TYPE.RED}
         icon={buttonConstants.ICON.XICON}
         style={{ width: '40px', height: '40px' }}
+        gradient
       />
     </header>
   );

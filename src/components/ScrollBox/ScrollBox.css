@@ -1,0 +1,84 @@
+@property --top-fade {
+  syntax: '<length>';
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --bottom-fade {
+  syntax: '<length>';
+  initial-value: 0px;
+  inherits: false;
+}
+
+.scroll-container {
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 10px;
+  -webkit-overflow-scrolling: touch;
+  --top-fade: 0px;
+  --bottom-fade: 0px;
+  transition:
+    --top-fade 0.2s ease,
+    --bottom-fade 0.2s ease;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent 0px,
+      black var(--top-fade),
+      black calc(100% - var(--bottom-fade)),
+      transparent 100%
+    ),
+    linear-gradient(black, black);
+  mask-size:
+    calc(100% - 10px) 100%,
+    10px 100%;
+  mask-position:
+    left top,
+    right top;
+  mask-repeat: no-repeat;
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      transparent 0px,
+      black var(--top-fade),
+      black calc(100% - var(--bottom-fade)),
+      transparent 100%
+    ),
+    linear-gradient(black, black);
+  -webkit-mask-size:
+    calc(100% - 10px) 100%,
+    10px 100%;
+  -webkit-mask-position:
+    left top,
+    right top;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.scroll-container.can-scroll-up {
+  --top-fade: 28px;
+}
+
+.scroll-container.can-scroll-down {
+  --bottom-fade: 28px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 2px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+}
+
+.scroll-container[scroll-color='amber']::-webkit-scrollbar,
+.scroll-container[scroll-color='amber']::-webkit-scrollbar-thumb {
+  background-color: var(--color-amber-500-o30);
+}
+
+.scroll-container[scroll-color='red']::-webkit-scrollbar {
+  background-color: var(--color-red-500-o30);
+}
+.scroll-container[scroll-color='red']::-webkit-scrollbar-thumb {
+  background-color: var(--color-red-500-o60);
+}

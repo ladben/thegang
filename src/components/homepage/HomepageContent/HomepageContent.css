@@ -118,42 +118,29 @@
   max-height: 100%;
 }
 
-.start-game-btn {
+.game-buttons {
   flex-shrink: 0;
-  text-transform: uppercase;
   width: 100%;
-  max-width: 300px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 14px 0;
-  border-radius: 16px;
-  background: var(--gradient-linear-golden);
-  border: 2px solid var(--color-golden-300);
-  font-size: 15px;
-  color: var(--color-dark);
-  font-weight: 700;
-  cursor: pointer;
   max-height: 60px;
-  -webkit-tap-highlight-color: transparent;
+  opacity: 1;
+  padding-bottom: 5px;
 }
 
-.content-wrapper[game-animating] .start-game-btn {
+.content-wrapper[game-animating] .game-buttons {
   transition:
     opacity var(--animation-duration-2) ease var(--animation-duration-2),
     max-height var(--animation-duration-2) ease var(--animation-duration-2),
-    padding var(--animation-duration-2) ease var(--animation-duration-2),
-    border var(--animation-duration-2) ease var(--animation-duration-2);
+    padding-bottom var(--animation-duration-2) ease var(--animation-duration-2);
 
   opacity: 0;
   max-height: 0px;
-  padding: 0;
-  border: 0;
+  padding-bottom: 0px;
 }
 
-.content-wrapper[game-animated] .start-game-btn {
+.content-wrapper[game-animated] .game-buttons {
   opacity: 0;
   max-height: 0;
-  padding: 0;
-  border: 0;
+  padding-bottom: 0px;
 }
