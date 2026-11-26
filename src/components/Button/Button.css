@@ -8,12 +8,34 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.button[bg-gradient] {
+  background: radial-gradient(
+    circle at top,
+    var(--color-amber-800-o50) 0%,
+    var(--color-button-gray-o80) 100%
+  );
+}
+
 .button[button-type='amber'] {
-  border: 1px solid var(--color-amber-500-o30);
+  border: 1.5px solid var(--color-golden-500);
+  box-shadow:
+    0 3px 0 var(--color-amber-800),
+    0 0 8px var(--color-golden-o30),
+    inset 0 0 5px var(--color-golden-o20);
 }
 
 .button[button-type='red'] {
-  border: 1px solid var(--color-red-500-o30);
+  border: 1.5px solid var(--color-red-muted-500);
+  box-shadow:
+    0 3px 0 var(--color-red-muted-900),
+    0 0 8px var(--color-red-muted-600-o30),
+    inset 0 0 5px var(--color-red-muted-600-o20);
+}
+
+.button[button-type='amber']:active,
+.button[button-type='red']:active {
+  box-shadow: none;
+  transform: translateY(3px);
 }
 
 .button p {
